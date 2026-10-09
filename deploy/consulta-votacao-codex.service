@@ -1,0 +1,21 @@
+[Unit]
+Description=API de consulta eleitoral Osasco 2026 (Codex)
+After=network.target
+
+[Service]
+Type=simple
+User=hermes
+Group=hermes
+WorkingDirectory=/home/hermes/projetos/consulta-resultado-votacao-presidente-2026-oz-codex
+Environment=CSV_PATH=/home/hermes/projetos/referencia-dados-presidente/osasco-presidente.csv
+Environment=API_ADDR=127.0.0.1:8096
+ExecStart=/home/hermes/projetos/consulta-resultado-votacao-presidente-2026-oz-codex/bin/servidor
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
